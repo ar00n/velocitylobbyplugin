@@ -1,0 +1,1 @@
+{"id":"velocitylobbyplugin","name":"VelocityLobbyPlugin","version":"1.0","description":"A plugin that send a player to the lobby or hub","authors":["TCOOfficiall"],"dependencies":[],"main":"nl.geslotenkingdom.geslotenlobby.velocitylobbyplugin.VelocityLobbyPlugin"}
