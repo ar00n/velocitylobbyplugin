@@ -6,3 +6,7 @@ build:
     name: "VelocityLobbyPlugin"
     paths: 
     - "target/*.jar"
+
+
+include:
+  template: Container-Scanning.gitlab-ci.yml
