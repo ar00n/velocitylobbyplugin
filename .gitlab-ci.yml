@@ -7,9 +7,5 @@ build:
     paths: 
     - "target/*.jar"
 
-
-include:
-  template: Dependency-Scanning.gitlab-ci.yml
-
 include:
   template: SAST.gitlab-ci.yml
