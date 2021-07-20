@@ -58,8 +58,8 @@ public class VelocityLobbyPlugin {
 
         servername = toml.getString("lobby-server");
 
-        commandManager.register(new HubCommand(s), "hub");
-        commandManager.register(new HubCommand(s), "lobby");
+        commandManager.register("hub", new HubCommand(s));
+        commandManager.register("lobby", new HubCommand(s));
         logger.info("Plugin has enabled!");
     }
 }

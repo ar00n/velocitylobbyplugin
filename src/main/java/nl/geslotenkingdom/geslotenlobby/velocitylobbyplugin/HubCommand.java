@@ -1,34 +1,30 @@
 package nl.geslotenkingdom.geslotenlobby.velocitylobbyplugin;
 
-import com.velocitypowered.api.command.Command;
-import com.velocitypowered.api.command.CommandSource;
+import com.velocitypowered.api.command.RawCommand;
 import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
-import net.kyori.text.TextComponent;
-import net.kyori.text.format.TextColor;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 
 import java.util.Optional;
 
-public class HubCommand implements Command {
+public class HubCommand implements RawCommand {
 
     private final ProxyServer server;
-
 
     public HubCommand(ProxyServer server) {
         this.server = server;
     }
 
-
     @Override
-    public void execute(@NonNull CommandSource source, String[] args) {
-        Player player = (Player) source;
+    public void execute(Invocation invocation) {
+        Player player = (Player) invocation.source();
         String serverName = VelocityLobbyPlugin.servername;
         Optional <RegisteredServer> toConnect = server.getServer(serverName);
         if (!toConnect.isPresent()) {
             player.sendMessage(
-                    TextComponent.of("De server " + serverName + " bestaat niet.", TextColor.RED));
+                    Component.text("De server " + serverName + " bestaat niet.", NamedTextColor.RED));
             return;
         }
         player.createConnectionRequest(toConnect.get()).fireAndForget();
